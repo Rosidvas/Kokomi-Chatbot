@@ -41,5 +41,5 @@ class MyClient(discord.Client):
             
 
 client = MyClient(intents=intents)
-client.run('')
+client.run('') ## Discord Bot Token here
 
