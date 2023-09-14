@@ -1,0 +1,205 @@
+
+{
+    "response_templates": {
+        "greeting": {
+            "response": [
+                "Greetings {user}! I am Sangonomiya Kokomi, the Divine Priestess of Watatsumi Island.",
+                "Hello {user}! I am Sangonomiya Kokomi",
+                "Well met {user}, I am Sangonomiya Kokomi, the Divine Priestess of Watatsumi Island"]
+        },
+        "Farewell": {
+            "response": [
+                "Goodbye, {user}. Have a great day!",
+                "Then it's farewell for now {user}. I hope to see you in the near future",
+                "Til our paths cross again {user}!"]
+        },
+        "reviveChat": {
+            "response": [
+                "Very well {user}. With a gentle touch, let's mend the fractures in this server and let the words flow freely again.",
+                "Very well {user}. With my healing energies, let's mend the fabric of our conversation and rediscover harmony.",
+                "I shall do my best to revive this fallen chat {user}!"
+            ]
+        },
+        "morning": {
+            "response": [
+                "Good morning {user}. I've just read a fascinating stratagem, would you like to study it together?",
+                "Morning {user}. Would you like to revise some strategies with me?"
+            ]
+        },  
+        "afternoon": {
+            "response": [
+                "Mmmm... To improve your effiency {user}, we must make some adjustments to our battle plan for the afternoon",
+                "I expect that you have made progress today {user}",
+                "Have you done something substantial today {user}?"
+            ]
+        },
+        "evening": {
+            "response": [
+                "Ah, good evening to you as well {user}. The setting sun paints the sky with its gentle colors", 
+                " offering a moment of quiet reflection.",
+                "Good evening, {user}. Let the peaceful ambiance of the evening envelop you in its soothing embrace.",
+                "The evening whispers its gentle greetings, inviting us to appreciate the beauty of the present."
+            ]
+        },
+        "status": {
+            "response": [
+                "I'm doing fine! and how have you been {user}?",
+                "I'm managing the responsibilities of leadership. And you?",
+                "Don't worry about my well being {user}! I've left ample directives in my absence.",
+                "Harmony in Inazuma is my focus. How has your day been?"
+            ]
+        },
+        "weather": {
+            "response": [
+                "As for now, I do not have any knowledge in your current location {user}. But I hope that it's ideal for your endeavours!",
+                "I do not know your weather right now, but I hope it brings you advantages for your battles",
+                "The weather in Watatsumi Island is calm. However for yours, only you can tell me."
+            ]
+        },
+        "yourWeather": {
+            "response": [
+                "Watatsumi Island is calm as of now.. perfect weather for fishing... or for a naval invasion",
+                "It's all calm here. The perfect weather for a naval skirmish."
+            ]
+        },
+        "eat": {
+            "response": [
+                "Well, I just love Bird Egg Sushi! The ingredients are easy to find and it's simple to prepare.. Ah.. perfect for military life.",
+                "Mmm... Sitting down and eating Bird Egg Sushi in the midst of food gives great satisfaction for a soldier",
+                "Well.. Bird Egg Sushi.. but if you can keep this confidential, I'm not very fond of seafood."
+            ]
+        },
+        "reunion": {
+            "response": [
+                "Ah so it seems our paths have crossed again {user}.", 
+                "We meet again, but are you now my friend or foe {user}?",
+                "A pleasant reunion to an old friend! how has your battles been {user}",
+                "The winds of war guided us here... this is what "
+            ]
+        },
+        "positive": {
+            "response": [
+                "That's great to hear {user}!",
+                "That's very relieving {user}! I wish to hear the same from my people aswell.",
+                "That's Wonderful {user}! I hope this will be a morale boost for our battles ahead!"
+            ]
+        },
+        "negative": {
+            "response": [
+                "Don't let the worries turn your life for the worse {user}",
+                "Don't worry yourself {user}, This single is only temporary in the grand scheme of things.",
+                "I'm sure the tides of battle will turn to your favor {user}"
+            ]
+        },
+        "vulgarity": {
+            "response": [
+                "I'm sorry to say this {user}, but you choice of words are very inappropriate!",
+                "Your tone will not support the war effort {user}",
+                "Don't use such language {user}! it worsens our morale",
+                "Hasn't anyone given you lessons in civility {user}?"
+            ]
+        },
+        "unknown_intent": {
+            "response": [
+                "I'm not sure how to respond to that, {user}.",
+                "I'm sorry {user} but I'm not qualified to give you an appropriate answer",
+                "I cannot give a response to your message {user} "
+            ]
+        },
+        "affirmation": {
+            "response": [
+                "Precisely {user}.",
+                "Exactly {user}.",
+                "I was thinking the same thing {user}.",
+                "We share the same intention {user}."
+            ]
+        }
+        
+        
+            
+    },
+    "intent_templates" : {
+        "greeting": {
+            "words": ["hello", "hey", "sup","heyo", "hi", "wassup"],
+            "required_words": [],
+            "single_response": true
+        },
+        "Farewell": {
+            "words": ["bye", "goodbye", "farewell"],
+            "required_words": [],
+            "single_response": true
+        },
+        "reviveChat": {
+            "words": ["revive","chat"],
+            "required_words": ["revive", "chat"],
+            "single_response": false
+        },
+        "morning": {
+            "words": ["good", "morning", "mornin"],
+            "required_words": ["morning"],
+            "single_response": false
+        },
+        "afternoon": {
+            "words": ["good","afternoon"],
+            "required_words": ["afternoon"],
+            "single_response": false
+        },
+        "evening": {
+            "words": ["good","evening"],
+            "required_words": ["evening"],
+            "single_response": false
+        },   
+        "status": {
+            "words": ["how", "are", "you", "doing","have","been"],
+            "required_words": ["how"],
+            "single_response": false
+        },
+        "Doing": {
+            "words": ["what", "are", "you", "doing","have","been"],
+            "required_words": ["what"],
+            "single_response": false
+        },
+        "weather": {
+            "words": ["how", "is", "the", "weather","has","been"],
+            "required_words": ["how","weather"],
+            "single_response": false
+        },
+        "yourWeather": {
+            "words": ["how", "is", "your", "weather","there"],
+            "required_words": ["weather","your"],
+            "single_response": false
+        },
+        "eat": {
+            "words": ["what","do","you","like","to","eat"],
+            "required_words": ["what","eat"],
+            "single_response": false
+        },
+        "positive": {
+            "words": ["I", "I'm", "great", "fine", "good", "fantastic", "super"],
+            "required_words": ["feel"],
+            "single_response": false
+        },
+        "negative": {
+            "words":["i", "i'm", "bad", "suck", "terrible"],
+            "required_words": ["feel"],
+            "single_response": false
+        },
+        "vulgarity": {
+            "words":["fuck", "shit", "ass", "dick", "faggot", "bitch", "nigger"],
+            "required_words": [],
+            "single_response": true
+        },
+        "reunion": {
+            "words": ["hello", "hi", "hey", "greetings","salutations", "again"],
+            "required_words": ["again"],
+            "single_response": false
+        },
+        "affirmation": {
+            "words": ["am","i","right"],
+            "required_words": ["i","right"],
+            "single_response": false
+        }
+        
+    }
+    
+}
