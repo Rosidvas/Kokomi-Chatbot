@@ -23,11 +23,11 @@ data = pickle.load(open("Kokomi.pkl", "rb"))
 words = data["words"]
 classes = data["classes"]
 
-model = load_model("Kokomi_a1.h5")
+model = load_model("") ## insert model here
 model.summary()
 
 def preprocess_input(user_input):
-    trigger_list = ["Kokomi","kokomi","kokofish","Kokofish"]
+    trigger_list = ["Kokomi","kokomi","kokofish","Kokofish"] ## Trigger bot responses
     
     tokenized_input = nltk.word_tokenize(user_input)
     if any(trigger in tokenized_input for trigger in trigger_list):
