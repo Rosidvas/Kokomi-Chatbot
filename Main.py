@@ -1,61 +1,69 @@
 
+
 import nltk
+import json
+import pickle
+import numpy as np
 import random
-from template import response_templates
-from template import intent_templates
-from nltk.tokenize import word_tokenize
-from nltk import pos_tag
+import tensorflow as tf
+import keras
+from nltk.stem.lancaster import LancasterStemmer
+from keras.models import load_model
 
-nltk.download('punkt')  # Download the necessary tokenizer data
-nltk.download('averaged_perceptron_tagger')
+stemmer = LancasterStemmer()
 
-def get_Keywords(sentence):
-    words = word_tokenize(sentence)
-    print("Tokenized words:", words)
-    return words
+#Dialogue Data
+with open("Kokomi_Dialogue_v1.json", "r") as file:
+    data = json.load(file)
 
-def get_intent(keywords):
+intents = data["intents"]
 
-    intent_scores = {intent: 0 for intent in intent_templates}
+#Chatbot model
+data = pickle.load(open("Kokomi.pkl", "rb"))
+words = data["words"]
+classes = data["classes"]
 
-    for word in keywords:
-        for intent, intent_keywords in intent_templates.items():
-            if word.lower() in intent_keywords:
-                intent_scores[intent] += 1
+model = load_model("Kokomi_a1.h5")
+model.summary()
 
-    max_score = max(intent_scores.values())
-    most_probable_intent = [intent for intent, score in intent_scores.items() if score == max_score]
+def preprocess_input(user_input):
+    trigger_list = ["Kokomi","kokomi","kokofish","Kokofish"]
     
-    #prints the scores
-    print("Intent Scores:")
-    for intent, score in intent_scores.items():
-        print(f"{intent}: {score}")
-
-    if max_score == 0:
-        return 'unknown_intent'
-    
-    return most_probable_intent[0] if most_probable_intent else 'unknown_intent'
-
-def get_Response(intent, username):
-    if intent in response_templates:
-        response_list = response_templates[intent]
-        response = random.choice(response_list).format(user=username)
-
-    else:
-        response_list = response_list['unknown_intent']
-        response = random.choice(response_list).format(user="Developer")
-
-    return response
-
-def analyze_Message(username, message):
-
-
-    keywords = get_Keywords(message)
-    if "Kokomi" in keywords:
-        intent = get_intent(keywords)
-        response = get_Response(intent, username)
-    
+    tokenized_input = nltk.word_tokenize(user_input)
+    if any(trigger in tokenized_input for trigger in trigger_list):
+        stemmed_input = [stemmer.stem(word.lower()) for word in tokenized_input]
+        return stemmed_input
     else:
         return False
+
     
+
+def get_response(intent_index):
+    recognized_intent = classes[intent_index]
+    for intent in intents:
+        if intent["tag"] == recognized_intent:
+            response = random.choice(intent["responses"])
+            break
+
     return response
+
+def analyze_user_input(username, user_input):
+    
+    
+    preprocessed_input = preprocess_input(user_input)
+
+    
+    if preprocessed_input == False:
+        return False
+            
+    input_data = [0] * len(words)
+    for word in preprocessed_input:
+        if word in words:
+            input_data[words.index(word)] = 1
+    input_data = np.array(input_data).reshape(1, -1)
+    predicted_output = model.predict(input_data)[0]
+    intent_index = np.argmax(predicted_output)
+    response = get_response(intent_index).format(user=username)
+
+    return response
+
