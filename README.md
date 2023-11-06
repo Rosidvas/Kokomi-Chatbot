@@ -6,4 +6,5 @@ these are the following dependencies installed.
 * NLTK
 * Tensorflow
 * Tflearn
+* Numpy
 * Discord.py
